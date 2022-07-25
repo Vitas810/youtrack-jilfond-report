@@ -3,6 +3,7 @@ import { IPuppeteerLink } from '../interfaces/puppeteer';
 const login = require('./login');
 const config: IConfig = require('dotenv').config().parsed;
 
+const FILTER_INPUT = 'input[placeholder="Filter items"]';
 const getLinkHtml = async (): Promise<IPuppeteerLink> => {
   const loginData = await login(config);
   const element = await loginData.page.$(
@@ -15,10 +16,16 @@ const getLinkHtml = async (): Promise<IPuppeteerLink> => {
   await loginData.page.goto(`${config.URL_YTR}reports`, {
     waitUntil: 'networkidle0',
   });
-  await loginData.page.waitFor(1000);
+
+  await loginData.page.waitForSelector('[data-test="sharedReports"] [title="Показать больше"]');
   await loginData.page.click(
     '[data-test="sharedReports"] [title="Показать больше"]'
   );
+
+  await loginData.page.focus(FILTER_INPUT);
+  // TODO сделать подстановку месяца
+  await loginData.page.keyboard.type('2022-06');
+
   const html = await loginData.page.$eval('.list_735', (element) => {
     return element.innerHTML;
   });
