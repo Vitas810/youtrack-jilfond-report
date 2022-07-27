@@ -28,7 +28,7 @@ const parsingData = (
   const implementedData: Array<ITast> = [];
   const $ = cheerio.load(content);
   const items: any = $(`a:contains(${name})`)
-    .closest('tbody[class="yt-table__group"]')
+    .closest('tbody.yt-table__group')
     .find(".yt-table__row");
   items.each(function(index) {
     let task: ITast = {
