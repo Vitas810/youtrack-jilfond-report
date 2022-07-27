@@ -1,5 +1,6 @@
 import { IConfig, ILinks } from '../interfaces/base';
 import { IPuppeteerLink } from '../interfaces/puppeteer';
+import {dateMonthSelect} from "../app";
 const login = require('./login');
 const config: IConfig = require('dotenv').config().parsed;
 
@@ -23,8 +24,7 @@ const getLinkHtml = async (): Promise<IPuppeteerLink> => {
   );
 
   await loginData.page.focus(FILTER_INPUT);
-  // TODO сделать подстановку месяца
-  await loginData.page.keyboard.type('2022-06');
+  await loginData.page.keyboard.type(dateMonthSelect);
 
   const html = await loginData.page.$eval('.list_735', (element) => {
     return element.innerHTML;

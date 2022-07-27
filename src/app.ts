@@ -15,6 +15,7 @@ const sp = new Spinner();
 sp.setSpinnerString(18);
 moment.locale("ru");
 
+let dateMonthSelect = '';
 prompt
   .run()
   .then(
@@ -24,6 +25,7 @@ prompt
         const dateMonth: string = moment()
           .month(answer)
           .format("YYYY-MM");
+        dateMonthSelect = dateMonth;
         const html: IPuppeteerLink = await puppeteerFunc.getLinkHtml();
         const links: ILinks = await cheerioFunc.parseLink(html, dateMonth);
         helpers.showError(links);
@@ -52,3 +54,5 @@ prompt
     }
   )
   .catch(console.error);
+
+export { dateMonthSelect };
