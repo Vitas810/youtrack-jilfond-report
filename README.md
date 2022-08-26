@@ -3,6 +3,7 @@
 # Программа для составления отчётов Jilfond
 
 ## Инструкция по использованию
+# Для рабоы необходим VPN
 
 1.  git clone https://github.com/StarkOne/jilfond-report-ts.git
 2.  Выполнить `cp .env.example .env`
