@@ -5,7 +5,7 @@
 ## Инструкция по использованию
 # Для рабоы необходим VPN
 
-1.  git clone https://github.com/StarkOne/jilfond-report-ts.git
+1.  git clone git@github.com:Vitas810/youtrack-jilfond-report.git
 2.  Выполнить `cp .env.example .env`
 3.  В файле .env укажите логин (LOGIN), пароль(PASSWORD) и оплату за час (PAYMENT_PER_HOUR) и свой URL на youtrack (URL_YTR)
 4.  Устанавливаем зависимости `npm i`
